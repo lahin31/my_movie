@@ -26,4 +26,22 @@ class HelperClass {
 	public static function renderView($file, $data) {
 		echo self::makeView($file, $data);
 	}
+
+	public static function getAdditionalInfo() {
+		$items = array(
+			'release_date' => array(
+				'label' => __('Release Date', 'lh_movie'),
+				'type' => 'text'
+			),
+			'budget' => array(
+				'label' => __('Movie Budget', 'lh_movie'),
+				'type' => 'text'
+			),
+			'chroyographer' => array(
+				'label' => __('Movie chroyographer', 'lh_movie'),
+				'type' => 'checkbox'
+			)
+		);
+		return apply_filters( 'lh_movie_additional_info', $items );
+	}
 }

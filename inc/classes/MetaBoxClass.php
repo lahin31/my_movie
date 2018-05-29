@@ -12,6 +12,8 @@ class MetaBoxClass {
 
 	public static function addMetaBoxes() {
 		add_meta_box( 'lh_movie_custom_meta', __( 'Movie Details', 'lh_movie' ), array( self::class, 'customMetaBoxCallback') );
+
+		add_meta_box( 'lh_movie_additional_info', __( 'Additional Info',  'lh_movie' ), array( self::class, 'addtionalInfoMetaCallback') );
 	}
 
 	public static function customMetaBoxCallback($post) {
@@ -24,6 +26,14 @@ class MetaBoxClass {
 
 		HelperClass::renderView( 'metaBoxes.movie_details', $data);
 	}
+
+	public static function addtionalInfoMetaCallback($post) {
+		$data = array(
+			'boxes' => HelperClass::getAdditionalInfo(),
+			'info' => get_post_meta( $post->ID, '_lh_movie_additional_info', true)
+		);
+		HelperClass::renderView( 'metaBoxes.additionalInfo', $data );
+	}	
 
 	public static function saveMeta($postID) {
 
@@ -38,7 +48,14 @@ class MetaBoxClass {
 			'_lh_movie_runtime' => sanitize_text_field( $_REQUEST['_lh_movie_runtime'] )
 		);
 
+		$additionalInfo = $_REQUEST['_lh_movie_additional_info'];
+		$formattedAdditionalInfo = array();
 
+		foreach ($additionalInfo as $infoIndex => $value) {
+			$formattedAdditionalInfo[ $infoIndex] = sanitize_text_field($value); 
+		}
+		$metaData['_lh_movie_additional_info'] = $formattedAdditionalInfo;
+		
 		foreach($metaData as $meta_key => $metaValue) {
 			update_post_meta(
 				$postID,
