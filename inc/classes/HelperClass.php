@@ -37,8 +37,8 @@ class HelperClass {
 				'label' => __('Movie Budget', 'lh_movie'),
 				'type' => 'text'
 			),
-			'chroyographer' => array(
-				'label' => __('Movie chroyographer', 'lh_movie'),
+			'choreographer' => array(
+				'label' => __('Movie choreographer', 'lh_movie'),
 				'type' => 'checkbox'
 			)
 		);

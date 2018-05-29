@@ -18,6 +18,7 @@ defined( 'ABSPATH' ) or die();
 // defining constant
 define( 'LH_MOVIE_PATH', plugin_dir_path(__FILE__) );
 define( 'LH_MOVIE_URL', plugin_dir_url(__FILE__) );
+define( 'LH_MOVIE_VERSION', '1.0' );
 
 include 'load.php';
 
@@ -50,6 +51,13 @@ class MyMovie {
  		add_action( 'add_meta_boxes_' . $postTypeName, array('MyMovie\Classes\MetaBoxClass', 'addMetaBoxes') );
  		add_action( 'save_post_' . $postTypeName, array('MyMovie\Classes\MetaBoxClass', 'saveMeta') );
  		add_action( 'admin_menu', array('MyMovie\Classes\SettingsClass', 'addSettingsMenu'));
+
+ 		add_action( 'admin_enqueue_scripts', array( $this, 'load_custom_wp_admin_style' ));
+ 	}
+
+ 	public function load_custom_wp_admin_style() {
+ 		wp_register_style( 'custom_wp_admin_css', LH_MOVIE_URL . 'assets/css/admin_style.css', array(), LH_MOVIE_VERSION );
+ 		wp_enqueue_style( 'custom_wp_admin_css' );
  	}
 
 }
