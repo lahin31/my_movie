@@ -14,4 +14,4 @@
 <div>
 	<label for="runtime"><?php _e('Runtime', 'lh_movie');?>: </label>
 	<input type="text" name="_lh_movie_runtime" id="_lh_movie_runtime" placeholder="Runtime" value="<?php echo @$_lh_movie_runtime;?>">
-</div>
+</div> 

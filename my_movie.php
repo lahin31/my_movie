@@ -39,6 +39,9 @@ class MyMovie {
  	public function commonHooks() {
  		// Register Post Type
  		add_action( 'init', array( '\MyMovie\Classes\PostTypeClass', 'initMoviePostType' ));
+ 		// Register ShortCode
+ 		$shortCodeClass = new \MyMovie\Classes\ShortCodeClass();
+ 		add_shortcode( 'lh_menu', array( $shortCodeClass, 'register'));
  	}
 
  	public function adminHooks() {
