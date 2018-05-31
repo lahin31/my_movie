@@ -18,7 +18,7 @@ class ShortCodeClass {
 			'category' => false,
 			'movie_type' => false,
 			'disable_modal' => false,
-			'items_ids' => false,
+			'item_ids' => false,
 			'relation' => 'OR',
 			'per_grid' => 2,
 			'offset' => 0, 

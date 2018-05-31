@@ -11,7 +11,7 @@ function lahinMovieRenderMenuItems($attributes) {
 	}
 
 	$taxonomies = array(
-		\MyMovie\Classes\PostTypeClass::$movieCategory     => ( $movie_category ) ? explode( ',', $movie_category ) : array(),
+		\MyMovie\Classes\PostTypeClass::$movieCategory     => ( $category ) ? explode( ',', $category ) : array(),
 		\MyMovie\Classes\PostTypeClass::$movieType     => ( $movie_type ) ? explode( ',', $movie_type ) : array()
 	);
 
@@ -29,7 +29,6 @@ function lahinMovieRenderMenuItems($attributes) {
 	return MyMovie\Classes\HelperClass::makeView($view_file, array(
 		'items' => $menuItems,
 		'display' => $display,
-		'currency' => \MyMovie\Classes\HelperClass::getCurrency(),
 		'disable_modal' => $disable_modal,
 		'modalClass' => $modalClass,
 		'per_grid' => $per_grid,

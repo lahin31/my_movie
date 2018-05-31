@@ -8,7 +8,7 @@
 
 namespace MyMovie\Classes;
 
-class PostTypeClass {
+class PostTypeClass { 
 
 	public static $postTypeName = 'lh_movie';
 	public static $movieCategory = 'lh_movie_category';
