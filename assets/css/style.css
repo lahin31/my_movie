@@ -25,3 +25,25 @@
   padding: 0;
 }
 
+.lh_movie_menu_default .movie-item .movie_featured_image,
+.lh_movie_group .movie-item .movie_featured_image {
+  width: 30%;
+  padding: 0;
+  margin: 0;
+  float: left;
+}
+
+.lh_movie_menu_default .movie-item .movie_featured_image img,
+.lh_movie_group .movie-item .movie_featured_image img {
+  max-width: 100%;
+}
+
+.lh_movie_menu_default .movie-item .movie-item-content,
+.lh_movie_group .movie-item .movie-item-content {
+  padding: 0;
+  padding-left: 15px;
+  margin: 0px;
+  width: 70%;
+  float: left;
+}
+

@@ -1,0 +1,41 @@
+.lh_movie_group {
+	display: block;
+	overflow: hidden;
+	width: 100%;
+	text-align: left;
+	.movie-item {
+		padding: 5px;
+		display: block;
+		overflow: hidden;
+		margin-bottom: 10px;
+		&:hover {
+			background-color: #f5f4eb;
+			border-radius: 5px;
+		}
+		h3, h4, h2, p {
+			margin: 0;
+			padding: 0;
+		}
+	}
+}
+
+.lh_movie_menu_default, .lh_movie_group {
+	.movie-item {
+		.movie_featured_image {
+			width: 30%;
+			padding: 0;
+			margin: 0;
+			float: left;
+			img {
+				max-width: 100%;
+			}
+		}
+		.movie-item-content {
+			padding: 0;
+			padding-left: 15px;
+			margin: 0px;
+			width: 70%;
+			float: left;
+		}
+	}
+}
