@@ -34,7 +34,6 @@ class MyMovie {
  	}
 
  	public function publicHooks() {
-
  	}
 
  	public function commonHooks() {
@@ -43,7 +42,8 @@ class MyMovie {
  		// Register ShortCode
  		$shortCodeClass = new \MyMovie\Classes\ShortCodeClass();
  		add_shortcode( 'lh_menu', array( $shortCodeClass, 'register'));
- 	}
+ 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueueScripts' ));
+	}
 
  	public function adminHooks() {
  		$postTypeName = \MyMovie\Classes\PostTypeClass::$postTypeName;
@@ -58,6 +58,12 @@ class MyMovie {
  	public function load_custom_wp_admin_style() {
  		wp_register_style( 'custom_wp_admin_css', LH_MOVIE_URL . 'assets/css/admin_style.css', array(), LH_MOVIE_VERSION );
  		wp_enqueue_style( 'custom_wp_admin_css' );
+ 	}
+
+ 	public function enqueueScripts() {
+ 		wp_register_style( 'lh_movie_style', LH_MOVIE_URL . 'assets/css/style.css', array(),
+			LH_MOVIE_VERSION );
+ 		wp_enqueue_style( 'lh_movie_style' );
  	}
 
 }

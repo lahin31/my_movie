@@ -17,10 +17,15 @@
 </div>
 <div class="lh_movie_meta_field">
 	<div class="lh_movie_meta_label">
-		<label for="stars"><?php _e('Stars', 'lh_movie');?>: </label>
+		<label for="_lh_movie_stars"><?php _e('Stars', 'lh_movie');?>: </label>
 	</div>
 	<div class="lh_meta_field">
-		<input type="text" name="_lh_movie_stars" class="regular-text" id="_lh_movie_stars" placeholder="Stars" value="<?php echo @$_lh_movie_stars;?>">
+		<select name="_lh_movie_stars" id="_lh_movie_stars" class="regular-text">
+			<?php $ranges = range(0, 5);?>
+			<?php foreach($ranges as $range): ?>
+				<option <?php if($range == $_lh_movie_stars) { echo "selected"; }?> value="<?php echo $range;?>"><?php echo $range;?></option>
+			<?php endforeach;?>
+		</select>
 	</div>
 </div>
 <div class="lh_movie_meta_field">

@@ -1,0 +1,27 @@
+.lh_movie_group {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  text-align: left;
+}
+
+.lh_movie_group .movie-item {
+  padding: 5px;
+  display: block;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.lh_movie_group .movie-item:hover {
+  background-color: #f5f4eb;
+  border-radius: 5px;
+}
+
+.lh_movie_group .movie-item h3,
+.lh_movie_group .movie-item h4,
+.lh_movie_group .movie-item h2,
+.lh_movie_group .movie-item p {
+  margin: 0;
+  padding: 0;
+}
+

@@ -14,7 +14,7 @@ function lahinMovieRenderMenuItems($attributes) {
 		\MyMovie\Classes\PostTypeClass::$movieCategory     => ( $category ) ? explode( ',', $category ) : array(),
 		\MyMovie\Classes\PostTypeClass::$movieType     => ( $movie_type ) ? explode( ',', $movie_type ) : array()
 	);
-
+ 
 	$menuItems = lahinMovieMenuGetMenuItems( $taxonomies, $limit, $relation, $attributes );
 
 	$modalClass = '';
