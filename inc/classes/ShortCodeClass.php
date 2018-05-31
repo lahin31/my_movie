@@ -15,10 +15,13 @@ class ShortCodeClass {
 		$defaults = apply_filters('lh_movie_shortcode_defaults', array(
 			'display' => 'default',
 			'limit' => -1,
+			'category' => false,
+			'movie_type' => false,
 			'disable_modal' => false,
+			'items_ids' => false,
 			'relation' => 'OR',
 			'per_grid' => 2,
-			'offset' => 0,
+			'offset' => 0, 
 			'excerpt_length' => null
 		));
 
@@ -26,6 +29,8 @@ class ShortCodeClass {
 		$attributes['view_file'] = self::getViewNameByDisplay($attributes['display']);
 		$attributes['excerptLength'] = self::getExcerptLength($attributes);
 		$attributes = apply_filters('lh_movie_shortcode_atts', $attributes);
+
+		return lahinMovieRenderMenuItems($attributes);
 	}
 
 	public static function getExcerptLength($attributes) {

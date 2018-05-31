@@ -14,6 +14,8 @@ class MetaBoxClass {
 		add_meta_box( 'lh_movie_custom_meta', __( 'Movie Details', 'lh_movie' ), array( self::class, 'customMetaBoxCallback') );
 
 		add_meta_box( 'lh_movie_additional_info', __( 'Additional Info',  'lh_movie' ), array( self::class, 'addtionalInfoMetaCallback') );
+
+		add_meta_box( 'lh_movie_additional_text', __( 'Additional Text',  'lh_movie' ), array( self::class, 'addtionalTextMetaCallback') );
 	}
 
 	public static function customMetaBoxCallback($post) {
@@ -35,6 +37,14 @@ class MetaBoxClass {
 		HelperClass::renderView( 'metaBoxes.additionalInfo', $data );
 	}	
 
+	public static function addtionalTextMetaCallback($post) {
+		$data = array(
+			'additionalText' => get_post_meta( $post->ID, '_lh_movie_additional_text', true)
+		);
+
+		HelperClass::renderView( 'metaBoxes.additionalText', $data );
+	}
+
 	public static function saveMeta($postID) {
 
 		if ( !isset($_REQUEST['has_movie_meta_info']) ) {
@@ -45,7 +55,8 @@ class MetaBoxClass {
 			'_lh_movie_director' => sanitize_text_field( $_REQUEST['_lh_movie_director'] ),
 			'_lh_movie_writter' => sanitize_text_field( $_REQUEST['_lh_movie_writter'] ),
 			'_lh_movie_stars' => sanitize_text_field( $_REQUEST['_lh_movie_stars'] ),
-			'_lh_movie_runtime' => sanitize_text_field( $_REQUEST['_lh_movie_runtime'] )
+			'_lh_movie_runtime' => sanitize_text_field( $_REQUEST['_lh_movie_runtime'] ),
+			'_lh_movie_additional_text' => wp_kses_post( $_REQUEST['_lh_movie_additional_text'])
 		);
 
 		$additionalInfo = $_REQUEST['_lh_movie_additional_info'];
@@ -55,7 +66,7 @@ class MetaBoxClass {
 			$formattedAdditionalInfo[ $infoIndex] = sanitize_text_field($value); 
 		}
 		$metaData['_lh_movie_additional_info'] = $formattedAdditionalInfo;
-		
+
 		foreach($metaData as $meta_key => $metaValue) {
 			update_post_meta(
 				$postID,
