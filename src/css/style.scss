@@ -3,6 +3,9 @@
 	overflow: hidden;
 	width: 100%;
 	text-align: left;
+	.movie_item_modal {
+		cursor: pointer;
+	}
 	.movie-item {
 		padding: 5px;
 		display: block;
@@ -19,7 +22,7 @@
 	}
 }
 
-.lh_movie_menu_default, .lh_movie_group {
+.lh_movie_default, .lh_movie_group {
 	.movie-item {
 		.movie_featured_image {
 			width: 30%;
@@ -37,5 +40,13 @@
 			width: 70%;
 			float: left;
 		}
+	}
+}
+
+// centered aligned menu
+.lh_movie_menu_centered_aligned {
+	.movie-item {
+		padding: 15px;
+		text-align: center;
 	}
 }
