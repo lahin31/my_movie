@@ -43,6 +43,16 @@ class MyMovie {
  		$shortCodeClass = new \MyMovie\Classes\ShortCodeClass();
  		add_shortcode( 'lh_menu', array( $shortCodeClass, 'register'));
  		add_action( 'wp_enqueue_scripts', array( $this, 'enqueueScripts' ));
+
+ 		$menuContentClass = new \MyMovie\Classes\MenuContentClass();
+ 		add_action( 'init', function() use ($menuContentClass) {
+ 			if( isset($_GET['lh_get_item']) && $_GET['lh_get_item']) {
+ 				$menuContentClass->getItemModal();
+ 				die();
+ 			}
+ 		});
+
+ 		// add_filter( 'the_content', array($menuContentClass, 'filterSingleMenuContent') );
 	}
 
  	public function adminHooks() {
@@ -64,6 +74,10 @@ class MyMovie {
  		wp_register_style( 'lh_movie_style', LH_MOVIE_URL . 'assets/css/style.css', array(),
 			LH_MOVIE_VERSION );
  		wp_enqueue_style( 'lh_movie_style' );
+
+ 		wp_register_script( 'lh_menu_script', LH_MOVIE_URL . 'assets/js/app.js', array( 'jquery'), LH_MOVIE_VERSION, true );
+
+ 		wp_enqueue_script( 'lh_menu_script' );
  	}
 
 }

@@ -51,9 +51,29 @@ const lhMovieApp = {
 			});
 	},
 	initModalClick() {
-		jQuery('.lh_movie_modal').on('click', (e) => {
+		jQuery('.movie_item_modal').on('click', (e) => {
 			e.preventDefault();
 			jQuery('html, body').addClass('lh_has_modal')
+			let movieId = jQuery(this).attr('data-movie_menu_id');
+			if(movieId) {
+				this.fetchMovie(movieId);
+				jQuery(document).on('keyup.lh_esc_key', (e) => {
+					if(e.keyCode == 27) { // escape key maps to keycode 27
+						this.removeModal();
+					}
+				})
+			}
+			this.addLoader();
+		});
+		jQuery(document).on('click', '.lr_close', () => {
+			this.removeModal();
+		});
+	},
+	documentReady() {
+		jQuery(document).ready(() => {
+			this.initModalClick();
 		})
 	}
-}
+};
+
+lhMovieApp.documentReady();
